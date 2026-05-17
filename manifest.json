@@ -2,13 +2,13 @@
   "name": "Collector's Library",
   "short_name": "Collector",
   "description": "Gérez votre collection personnelle de livres, musiques, films et jeux vidéo.",
-  "start_url": "/",
+  "start_url": "/ma_collection/code.html",
   "display": "standalone",
   "background_color": "#f7f9ff",
   "theme_color": "#1a2b48",
   "icons": [
     {
-      "src": "{{DATA:IMAGE:IMAGE_1}}",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
