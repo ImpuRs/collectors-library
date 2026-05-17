@@ -319,9 +319,11 @@ function StarsRow({ rating, size = 18, gap = 3 }) {
 function BottomNav({ tabs, active, onPick }) {
   return (
     <div style={{
-      position: 'absolute', bottom: 0, left: 0, right: 0, height: 84,
+      position: 'absolute', bottom: 0, left: 0, right: 0,
+      minHeight: 64,
       background: '#fff', borderTop: '1px solid rgba(15,20,40,0.06)',
-      paddingBottom: 22, paddingTop: 6, paddingLeft: 6, paddingRight: 6,
+      paddingBottom: 'max(8px, env(safe-area-inset-bottom, 0px))',
+      paddingTop: 6, paddingLeft: 6, paddingRight: 6,
       display: 'flex', alignItems: 'center', justifyContent: 'space-around',
       zIndex: 30,
     }}>
@@ -353,7 +355,8 @@ function BottomNav({ tabs, active, onPick }) {
 function FAB({ onClick, bottom = 100 }) {
   return (
     <button onClick={onClick} style={{
-      ...btnReset, position: 'absolute', right: 16, bottom,
+      ...btnReset, position: 'absolute', right: 16,
+      bottom: `calc(${bottom - 22}px + max(22px, env(safe-area-inset-bottom, 0px)))`,
       width: 52, height: 52, borderRadius: '50%',
       background: '#1A2B48', color: '#fff',
       display: 'flex', alignItems: 'center', justifyContent: 'center',

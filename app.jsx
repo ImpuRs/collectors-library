@@ -57,27 +57,17 @@ function App() {
   const top = stack[stack.length - 1];
 
   return (
-    <div style={{
-      width: 402, height: 874, borderRadius: 48, overflow: 'hidden',
-      position: 'relative', background: '#F4F6FB',
-      boxShadow: '0 40px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.12), 0 0 0 12px #1A1F2C',
+    <div className="app-shell" style={{
+      width: '100%', height: '100dvh', maxWidth: 480, margin: '0 auto',
+      overflow: 'hidden', position: 'relative', background: '#F4F6FB',
       fontFamily: '-apple-system, system-ui, sans-serif',
       WebkitFontSmoothing: 'antialiased',
     }}>
-      {/* Dynamic island */}
-      <div style={{
-        position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)',
-        width: 126, height: 37, borderRadius: 24, background: '#000', zIndex: 80,
-      }} />
-      {/* Status bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 70 }}>
-        <IOSStatusBar dark={false}/>
-      </div>
-
       {/* Scrollable area */}
       <div style={{
-        position: 'absolute', top: 54, left: 0, right: 0, bottom: 0,
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
         overflowY: 'auto', overflowX: 'hidden',
+        paddingTop: 'env(safe-area-inset-top, 0px)',
       }} key={tab}>
         {mainContent}
       </div>
@@ -89,15 +79,6 @@ function App() {
       <BottomNav tabs={bottomTabs} active={tab}
         onPick={(id) => id === 'add' ? openAdd() : setTab(id)}/>
 
-      {/* Home indicator */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 90,
-        height: 22, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
-        paddingBottom: 8, pointerEvents: 'none',
-      }}>
-        <div style={{ width: 139, height: 5, borderRadius: 100, background: 'rgba(0,0,0,0.28)' }} />
-      </div>
-
       {/* Side menu */}
       <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)}
         onNav={onNav} profile={profile}
@@ -108,44 +89,35 @@ function App() {
       {top && top.type === 'detail' && (
         <Overlay>
           <div style={{
-            position: 'absolute', top: 54, left: 0, right: 0, bottom: 0,
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
             overflowY: 'auto', overflowX: 'hidden', background: '#F4F6FB',
+            paddingTop: 'env(safe-area-inset-top, 0px)',
           }}>
             <DetailScreen item={items.find(i => i.id === top.item.id) || top.item}
               onBack={popStack} onUpdate={updateItem}/>
           </div>
           <BottomNav tabs={bottomTabs} active={tab}
             onPick={(id) => { popStack(); id === 'add' ? openAdd() : setTab(id); }}/>
-          <div style={{
-            position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 90,
-            height: 22, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
-            paddingBottom: 8, pointerEvents: 'none',
-          }}>
-            <div style={{ width: 139, height: 5, borderRadius: 100, background: 'rgba(0,0,0,0.28)' }} />
-          </div>
         </Overlay>
       )}
       {top && top.type === 'add' && (
         <Overlay>
-          <div style={{ position: 'absolute', top: 54, left: 0, right: 0, bottom: 0 }}>
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            paddingTop: 'env(safe-area-inset-top, 0px)',
+          }}>
             <AddScreen onClose={popStack} onSearch={() => popStack()} profile={profile}/>
           </div>
           <BottomNav tabs={bottomTabs} active="add"
             onPick={(id) => { popStack(); id !== 'add' && setTab(id); }}/>
-          <div style={{
-            position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 90,
-            height: 22, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
-            paddingBottom: 8, pointerEvents: 'none',
-          }}>
-            <div style={{ width: 139, height: 5, borderRadius: 100, background: 'rgba(255,255,255,0.7)' }} />
-          </div>
         </Overlay>
       )}
       {top && top.type === 'sync' && (
         <Overlay>
           <div style={{
-            position: 'absolute', top: 54, left: 0, right: 0, bottom: 0,
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
             overflowY: 'auto', overflowX: 'hidden', background: '#F4F6FB',
+            paddingTop: 'env(safe-area-inset-top, 0px)',
           }}>
             <SyncScreen onBack={popStack} profile={profile}/>
           </div>
@@ -156,8 +128,9 @@ function App() {
       {top && top.type === 'members' && (
         <Overlay>
           <div style={{
-            position: 'absolute', top: 54, left: 0, right: 0, bottom: 0,
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
             overflowY: 'auto', overflowX: 'hidden', background: '#F4F6FB',
+            paddingTop: 'env(safe-area-inset-top, 0px)',
           }}>
             <MembersScreen members={MEMBERS} onBack={popStack} profile={profile}/>
           </div>
