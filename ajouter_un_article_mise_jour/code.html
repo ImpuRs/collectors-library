@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ajouter un Article - Collector’s Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e8",
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#ebeef3",
+                    "inverse-primary": "#b6c7eb",
+                    "on-primary-fixed-variant": "#374765",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#211400",
+                    "tertiary-container": "#3c2700",
+                    "surface-variant": "#e0e3e8",
+                    "surface-container-high": "#e5e8ee",
+                    "tertiary-fixed-dim": "#e5c18a",
+                    "outline": "#75777e",
+                    "on-secondary-container": "#626567",
+                    "on-tertiary-fixed-variant": "#5b4217",
+                    "secondary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f1f4f9",
+                    "on-tertiary-fixed": "#281900",
+                    "primary-fixed": "#d7e2ff",
+                    "secondary": "#5c5f61",
+                    "surface-dim": "#d7dadf",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#181c20",
+                    "on-tertiary-container": "#ad8d5b",
+                    "surface": "#f7f9ff",
+                    "primary": "#031632",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c5c6ce",
+                    "surface-tint": "#4e5f7e",
+                    "on-surface": "#181c20",
+                    "background": "#f7f9ff",
+                    "primary-container": "#1a2b48",
+                    "on-primary-fixed": "#081b38",
+                    "on-surface-variant": "#44474d",
+                    "inverse-on-surface": "#eef1f6",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#8293b5",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "on-secondary-fixed": "#191c1e",
+                    "inverse-surface": "#2d3135",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#444749",
+                    "tertiary-fixed": "#ffdead",
+                    "surface-bright": "#f7f9ff",
+                    "secondary-container": "#e0e3e5",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-grid": "12px",
+                    "xs": "8px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-sm-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-sm-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .scanner-overlay {
+        background: rgba(0, 0, 0, 0.4);
+        mask-image: radial-gradient(transparent 200px, black 201px);
+        -webkit-mask-image: radial-gradient(circle, transparent 120px, black 121px);
+      }
+      .scanner-frame {
+        border: 2px solid white;
+        box-shadow: 0 0 0 1000px rgba(3, 22, 50, 0.5);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-inverse-surface flex justify-between items-center w-full px-margin-mobile py-md z-50">
+<div class="flex items-center gap-md">
+<button class="text-primary dark:text-primary-fixed-dim active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-primary dark:text-primary-fixed-dim">Scanner le Code-barres</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional high-resolution studio portrait of a young man with a friendly expression. The lighting is soft and even, creating a clean light-mode aesthetic suitable for a modern UI avatar. The background is a solid, neutral light grey that emphasizes the subject's features. The overall mood is approachable and polished." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2tOZbvkniT6RU59Sg8cTilcH8NFpvNWMIONp_QE9P7KO9mtpu_tcwyi7jzGpHYMLUINRCqIgm9hh-y70vwKl7TGwr289xcPBq4eYMmvBIVF4QZHAkacl8ji8UEbJV5q06LqKoAY63F6wbC98UOxCYrikbs6AMSeXx_JgNn0JVis8QMxm2NDtfml-mj1zaxytM0hCvpplylcLze4wukh1zbOaZrdq5TY5IfyWm5iYSjo0tllKP1gI7TH9tbDgtuuK4x1sJobtPDf_p"/>
+</div>
+</header>
+<main class="flex-grow flex flex-col">
+<!-- Viewfinder Section (Camera View) -->
+<section class="relative w-full aspect-[4/3] md:aspect-video bg-black overflow-hidden flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80" data-alt="A high-angle, cinematic close-up shot of several DVD and Blu-ray cases stacked horizontally, showing colorful spine art and barcodes. The lighting is moody and focused, highlighting the textures of the plastic cases. The aesthetic is archival and clean, reflecting the premium feel of a dedicated collector's physical media library." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbI768VHWXod4w-IWEx_El0AYtN8WJJhwIAe_Ns9CSP7cIm1GGkAeSQJkUun1JdpIQe85acoJ6wv5-6-29Md7AVfaBCDJEZJreIrzaHt4YAmCbXfMe_Luf7C6fSb_amM-TdbsvOnKgGSctHcCknitjyUuxzPij2KscdqlpMjFOYt5x8m4JSzb1_qW8wLTdJDIV-tnIv7d-G5eb9xKXO_idiOyJYPYx9G8M9Lj41byDavkJCsSdcEfZ25F9eToh75crE85KzRXY7ig8"/>
+<!-- Scanner Frame UI -->
+<div class="relative z-10 w-64 h-40 border-2 border-white/80 rounded-xl flex items-center justify-center">
+<div class="absolute -top-1 -left-1 w-6 h-6 border-t-4 border-l-4 border-primary-fixed rounded-tl-sm"></div>
+<div class="absolute -top-1 -right-1 w-6 h-6 border-t-4 border-r-4 border-primary-fixed rounded-tr-sm"></div>
+<div class="absolute -bottom-1 -left-1 w-6 h-6 border-b-4 border-l-4 border-primary-fixed rounded-bl-sm"></div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 border-b-4 border-r-4 border-primary-fixed rounded-br-sm"></div>
+<!-- Scanning Line Animation Simulation -->
+<div class="w-full h-[2px] bg-error shadow-[0_0_8px_rgba(186,26,26,0.8)] opacity-70"></div>
+</div>
+<div class="absolute bottom-md left-0 w-full text-center z-10">
+<p class="text-white text-body-md font-medium bg-black/40 inline-block px-md py-xs rounded-full backdrop-blur-sm">Alignez le code-barres dans le cadre</p>
+</div>
+<!-- Flash Toggle -->
+<button class="absolute top-md right-md z-10 bg-black/40 p-sm rounded-full text-white backdrop-blur-sm active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="flashlight_on">flashlight_on</span>
+</button>
+</section>
+<!-- Manual Entry Section -->
+<section class="flex-grow bg-surface rounded-t-[32px] -mt-xl relative z-20 px-margin-mobile pt-xl pb-32">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full mx-auto mb-lg"></div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-md">Recherche manuelle</h2>
+<p class="text-secondary text-body-md mb-lg">Si le scan ne fonctionne pas, saisissez les informations ci-dessous.</p>
+<form class="space-y-lg">
+<!-- Title Field -->
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant ml-xs" for="title">Titre du média</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-secondary" data-icon="search">search</span>
+<input class="w-full pl-11 pr-md py-md bg-surface-container-low border border-outline-variant rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-body-lg placeholder:text-secondary-fixed-dim transition-all" id="title" placeholder="Ex: Inception, The Beatles..." type="text"/>
+</div>
+</div>
+<!-- Media Type Selection -->
+<div class="space-y-xs">
+<label class="text-label-md text-on-surface-variant ml-xs">Type de média</label>
+<div class="grid grid-cols-2 gap-sm">
+<label class="cursor-pointer">
+<input class="sr-only peer" name="media_type" type="radio" value="music"/>
+<div class="flex flex-col items-center justify-center p-md bg-surface-container-low border border-outline-variant rounded-xl peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-xs" data-icon="album">album</span>
+<span class="text-label-md">Musique</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="media_type" type="radio" value="movie"/>
+<div class="flex flex-col items-center justify-center p-md bg-surface-container-low border border-outline-variant rounded-xl peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-xs" data-icon="movie">movie</span>
+<span class="text-label-md">Films</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="media_type" type="radio" value="game"/>
+<div class="flex flex-col items-center justify-center p-md bg-surface-container-low border border-outline-variant rounded-xl peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-xs" data-icon="sports_esports">sports_esports</span>
+<span class="text-label-md">Jeux Vidéo</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="media_type" type="radio" value="book"/>
+<div class="flex flex-col items-center justify-center p-md bg-surface-container-low border border-outline-variant rounded-xl peer-checked:bg-primary-container peer-checked:border-primary-container peer-checked:text-on-primary-container hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-xs" data-icon="menu_book">menu_book</span>
+<span class="text-label-md">Livres</span>
+</div>
+</label>
+</div>
+</div>
+<button class="w-full py-md bg-primary text-on-primary font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-95 transition-all flex justify-center items-center gap-xs mt-xl" type="submit">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+                    Rechercher dans la bibliothèque
+                </button>
+</form>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs pb-md pt-xs bg-surface dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(26,43,72,0.05)]">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-label-md text-label-md">Collection</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-label-md text-label-md">Ajouter</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-md text-label-md">Stats</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ma Collection - Collector’s Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e8",
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#ebeef3",
+                    "inverse-primary": "#b6c7eb",
+                    "on-primary-fixed-variant": "#374765",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#211400",
+                    "tertiary-container": "#3c2700",
+                    "surface-variant": "#e0e3e8",
+                    "surface-container-high": "#e5e8ee",
+                    "tertiary-fixed-dim": "#e5c18a",
+                    "outline": "#75777e",
+                    "on-secondary-container": "#626567",
+                    "on-tertiary-fixed-variant": "#5b4217",
+                    "secondary-fixed": "#e0e3e5",
+                    "surface-container-low": "#f1f4f9",
+                    "on-tertiary-fixed": "#281900",
+                    "primary-fixed": "#d7e2ff",
+                    "secondary": "#5c5f61",
+                    "surface-dim": "#d7dadf",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#181c20",
+                    "on-tertiary-container": "#ad8d5b",
+                    "surface": "#f7f9ff",
+                    "primary": "#031632",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c5c6ce",
+                    "surface-tint": "#4e5f7e",
+                    "on-surface": "#181c20",
+                    "background": "#f7f9ff",
+                    "primary-container": "#1a2b48",
+                    "on-primary-fixed": "#081b38",
+                    "on-surface-variant": "#44474d",
+                    "inverse-on-surface": "#eef1f6",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#8293b5",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "on-secondary-fixed": "#191c1e",
+                    "inverse-surface": "#2d3135",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#444749",
+                    "tertiary-fixed": "#ffdead",
+                    "surface-bright": "#f7f9ff",
+                    "secondary-container": "#e0e3e5",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-grid": "12px",
+                    "xs": "8px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        #nav-drawer {
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #nav-drawer.open {
+            transform: translateX(0);
+        }
+        #nav-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #nav-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-primary overflow-x-hidden">
+<!-- Navigation Drawer Overlay -->
+<div class="fixed inset-0 bg-black/40 z-[60]" id="nav-overlay" onclick="toggleDrawer()"></div>
+<!-- Navigation Drawer -->
+<aside class="fixed top-0 left-0 h-full w-[280px] bg-surface z-[70] rounded-r-xl shadow-xl flex flex-col border-r border-outline-variant" id="nav-drawer">
+<!-- Drawer Header / Profile Section -->
+<div class="p-lg flex flex-col gap-md border-b border-outline-variant bg-surface-container-low">
+<div class="flex justify-between items-start">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDyYfEz3c3vH-KTdKiRLIdZ-bW9wAQxk0ZLzkyjBZnXhBxN9I1ZOVqAq4paW6zjEH6_jBlx7sgEKioLn5bl6oz-UPAaOXC4PTwk2ML3pytcBUm0KpSdeKLetWAuYV4HWkdmSfakBpWDPnZWBZ9nk1l7wxEIzmdGQ6oleFFOIwC-UhFBSqMpQQMvSC-GhyvwLCYYvhrHyp5cCkmEgsG5uuWKJcxnS6Hebvv5OWU9EIOicrJdL9RVlx0DP1-yI6ZtXYqElI_pnMWB5L"/>
+</div>
+<button class="p-1 -mr-2 text-secondary" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div>
+<h2 class="font-headline-sm text-primary">Jean Dupont</h2>
+<p class="text-body-md text-secondary">collectionneur@exemple.fr</p>
+</div>
+<!-- Sync Status Section under Profile -->
+<div class="flex items-center gap-xs mt-xs py-2 px-3 bg-primary-container/10 rounded-lg border border-primary-container/20">
+<span class="material-symbols-outlined text-sm text-primary" style="font-size: 16px;">cloud_done</span>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider leading-none">Connecté à Google Drive</span>
+<span class="text-[10px] text-on-surface-variant leading-tight">Dernière synchro : il y a 2h</span>
+</div>
+</div>
+</div>
+<!-- Navigation Menu Items -->
+<div class="flex-1 py-md overflow-y-auto">
+<nav class="space-y-1 px-sm">
+<a class="flex items-center gap-md px-md py-3 rounded-xl bg-primary-container text-on-primary-container" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-body-md font-semibold">Ma Collection</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="font-body-md">Favoris</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-body-md">Catégories</span>
+</a>
+<div class="my-md border-t border-outline-variant mx-md"></div>
+<!-- Added Menu Item: Sauvegarde & Cloud -->
+<a class="flex items-center gap-md px-md py-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">cloud</span>
+<span class="font-body-md">Sauvegarde &amp; Cloud</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Paramètres</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Aide &amp; Support</span>
+</a>
+</nav>
+</div>
+<!-- Drawer Footer -->
+<div class="p-md border-t border-outline-variant text-center">
+<p class="text-[11px] text-outline">Collector’s Library v2.4.0</p>
+</div>
+</aside>
+<script>
+    function toggleDrawer() {
+        const drawer = document.getElementById('nav-drawer');
+        const overlay = document.getElementById('nav-overlay');
+        drawer.classList.toggle('open');
+        overlay.classList.toggle('open');
+    }
+</script>
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile py-md docked full-width top-0 shadow-sm">
+<div class="flex items-center gap-md">
+<button class="active:scale-95 transition-transform duration-200 text-on-surface" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-sm text-primary font-bold">Collector’s Library</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A clean, professional headshot of a person with a friendly expression, captured with soft, natural lighting. The background is a blurred, high-end office interior with a neutral color palette. The image follows a modern light-mode aesthetic with crisp details and high-contrast tones, matching a premium corporate design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDyYfEz3c3vH-KTdKiRLIdZ-bW9wAQxk0ZLzkyjBZnXhBxN9I1ZOVqAq4paW6zjEH6_jBlx7sgEKioLn5bl6oz-UPAaOXC4PTwk2ML3pytcBUm0KpSdeKLetWAuYV4HWkdmSfakBpWDPnZWBZ9nk1l7wxEIzmdGQ6oleFFOIwC-UhFBSqMpQQMvSC-GhyvwLCYYvhrHyp5cCkmEgsG5uuWKJcxnS6Hebvv5OWU9EIOicrJdL9RVlx0DP1-yI6ZtXYqElI_pnMWB5L"/>
+</div>
+</div>
+</header>
+<main class="pb-32">
+<!-- Search and Filter Section -->
+<section class="px-margin-mobile pt-md space-y-md">
+<!-- Search Bar -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md transition-all" placeholder="Rechercher dans ma collection..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-xs overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile pb-xs">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform">Tout</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest active:scale-95 transition-transform border border-outline-variant">Livres</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest active:scale-95 transition-transform border border-outline-variant">DVD</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest active:scale-95 transition-transform border border-outline-variant">CD</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest active:scale-95 transition-transform border border-outline-variant">Manga</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest active:scale-95 transition-transform border border-outline-variant">BD</button>
+</div>
+</section>
+<!-- Grid View -->
+<section class="px-margin-mobile mt-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter-grid">
+<!-- Card Item: Manga -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="Manga Cover" class="w-full h-full object-cover" data-alt="A vibrant and detailed manga book cover featuring dynamic illustration of a character. The artwork is clean with sharp line work and saturated colors. The lighting is dramatic and highlights the archival quality of the book. The image is set against a neutral, minimal background in a professional studio photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9X6r068liQvYqbQy_b2L8BDVOqksY8KLyiDxX0U4dceXkH6R3kfEaEfXOGXvA0Yk31Z4QIY57Ms0uGuE5mne6qRjDP7w58IX_clO2rBGeSuRsQAXBGnGEMOhHwQd2RK9Y5QMHuh7iRRnj2nZ9iKqFtvf5V8ss8uqKE4rszrhFk32i9WIifv5HmR9tTL0v4HjEf8bfM2iVBWPvyxaXVLHdIMLOVNH663W-ZrH90AJ3I9Jfm3fj7wAXe9p1SoqZLvt0VioRn4G5KpPX"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-secondary font-label-md text-[10px] w-fit">MANGA</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Berserk - Tome 01</h3>
+<p class="text-[12px] text-secondary">Kentaro Miura</p>
+</div>
+</div>
+<!-- Card Item: DVD -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="DVD Cover" class="w-full h-full object-cover" data-alt="A cinematic movie poster for a modern sci-fi film, presented on a high-quality physical DVD case. The visual features deep blues and glowing oranges with atmospheric lighting. The design is sleek and professional, conveying a sense of premium media collection. The lighting is soft and ambient, emphasizing textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqUHbkcG_ZtxX5sGc97sbOAvxlVzKvLi-oGcqvd9ajPaWGYpven1vkbmtWgGkc8Pzp6M5BLmx0KHwU0pMhzFZBv59vS3opr0_JMCsMbnQ_FENEszsWzgAMhID-BHPsvucNrqEqLZN_9kytjG7A5uyBBqme3mf6Ca7YKFqPntww8nWeyz6jljfOBspEsdx5kJPBDzRIPEZwsjuypkA8OI05uQGpPuQL-KxaBD4m2qYjSp8R9_TBgP-Nye33cGKOORNFHZqblec7Ymd1"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-[10px] w-fit">DVD</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Interstellar</h3>
+<p class="text-[12px] text-secondary">Christopher Nolan</p>
+</div>
+</div>
+<!-- Card Item: Book -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="A minimalist book cover design with elegant typography on a textured paper surface. The background is a soft beige, and the lighting is warm and inviting, suggesting a cozy reading environment. The archival quality of the book is evident in the xrisp edges and deep shadows. Professional product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7sxlumO8tS3pttLs8dU9NEJ2w_oZCniEEMBANxn-Iv8TDqCROyNlfNUMnNPxcJlHB0K_yJsNoF0-HxXywgHcy2wskSeBBlsC2pv2pOZyE_Bj3C8j9O1insjNHEAwFbcshb3s5maT2SeCmliuy5jpmDQogG5q2gr1LNcoCpF4ZrvMy1_uQuXgxI1f71Kdie6Hlj5LDQA_y4iyJ90Y8M__k_NkpT9MG0D8qoaQzdRGyLPpkR_pSuMYMqQiz92khi639XhF6qTHKGrHN"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-md text-[10px] w-fit">LIVRE</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Dune</h3>
+<p class="text-[12px] text-secondary">Frank Herbert</p>
+</div>
+</div>
+<!-- Card Item: CD -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[1/1] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="CD Cover" class="w-full h-full object-cover" data-alt="A modern album cover artwork featuring abstract graphic design with vibrant blue and black tones. The image is presented as a physical CD jewel case with realistic plastic reflections. The lighting is clinical and bright, showcasing the details of the media object in a minimalist gallery setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIdzsBct-_DN7NKKBMmxp3Q4GLhpm0K0axHcZwsCs6IcCIuJ4TklHVgSwg16qsQIFGgf8DzEVJyXh_GDMBK26kZT-lgMI1dYGdBcnh9rsv8RQlV7_fn_i2iKVGccXLoWGefzzdOBxJugwZdYQOcUcVdTe7Rw1hOIXTpRKzp2vywgNB18Q3gXLdbNkQXvmK4a5yXbzCbVO-9nvLExzr7XfFYw_kuGoM242fBskSOkjLx0rU0fTrcI0mC2Eulp3h-I12_1fsGpxYN5fw"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-[10px] w-fit">CD</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Random Access Memories</h3>
+<p class="text-[12px] text-secondary">Daft Punk</p>
+</div>
+</div>
+<!-- Card Item: BD -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="BD Cover" class="w-full h-full object-cover" data-alt="A classic European comic book cover featuring adventurous characters in a hand-drawn illustration style. The colors are earthy and traditional. The cover is displayed in a way that emphasizes its collectible nature, with soft, directional light casting subtle shadows. The aesthetic is clean and modern yet respectful of heritage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LZ4hQPRaouKvXpIcu1tpUydtn987l5ZlxGbMpnESnW3A5vpmRkwJqyKUjp4Tz5mkv9bHR_CvawBTWm_7USnshIiGUslqOi8huR0e-XF5-VWiG0vCPYd0tYvQMCh4GAF_irCUq0IDlAOYjtvQkkdY4rj8KYsrl3DTRp-XvbAFnZmHizm7gEgmNhJX1thPg2N0eHm4HO71JdQ8lM74SP53m2KVlB9V-A1nUW63On2LmBsycwZsJQdiuhqLfKRxhXgK2zC36obFLy6m"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-md text-[10px] w-fit">BD</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Tintin au Tibet</h3>
+<p class="text-[12px] text-secondary">Hergé</p>
+</div>
+</div>
+<!-- Card Item: DVD (Asymmetric layout feel) -->
+<div class="group flex flex-col space-y-xs cursor-pointer">
+<div class="aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container shadow-[0_4px_12px_rgba(26,43,72,0.05)] transition-transform duration-300 group-hover:-translate-y-1">
+<img alt="DVD Cover" class="w-full h-full object-cover" data-alt="A moody, atmospheric movie poster for a dramatic film, shown on a premium physical Blu-ray case. The design uses high-contrast blacks and deep reds. The lighting is sophisticated and cinematic, giving the object a luxurious and curated feel within a high-end digital library interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7MS4-u9QMALSbbeGmnC6O2J7q8dwph7g9B6wSTtQ5Dv9P3nGFUtV_O7uDJBVYJ5r7NU1e3cjlorbG5__Mw-_bo_CtgMyAWrLTW6lj1Xh_RBp2ieZS7ZQ4ztQB4SgGO4kjvTL18m9pK1IjPOjKPrNYx4Es5YibnnEaE08l-zOlwyBTHPWc2ADGmRLsVS34LGMRmmqx18bqvrdnS-9-77naoEqlk7242Y8gmI1fumsvG9WXflri_IMCXT469BEnXuDr_xty7E-Wq9pG"/>
+</div>
+<div class="flex flex-col gap-base">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-[10px] w-fit">DVD</span>
+<h3 class="font-body-md text-body-md font-bold text-primary truncate">Inception</h3>
+<p class="text-[12px] text-secondary">Christopher Nolan</p>
+</div>
+</div>
+</div>
+<!-- Empty State -->
+<div class="hidden flex flex-col items-center justify-center py-20 space-y-md text-center opacity-50">
+<div class="w-24 h-24 rounded-full bg-surface-container-low flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-4xl" data-icon="library_add">library_add</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Votre bibliothèque est vide</h4>
+<p class="text-secondary font-body-md max-w-xs mx-auto">Commencez à ajouter vos précieux objets pour construire votre sanctuaire numérique.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-3 rounded-xl font-label-md active:scale-95 transition-all">Ajouter mon premier objet</button>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs pb-md pt-xs bg-surface shadow-[0_-4px_12px_rgba(26,43,72,0.05)] docked full-width bottom-0">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-label-md text-label-md">Collection</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:bg-surface-container-high active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Ajouter</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-4 py-1 hover:bg-surface-container-high active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-md text-label-md">Stats</span>
+</a>
+</nav>
+</body></html>

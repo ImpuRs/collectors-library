@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#181c20",
+                        "surface-container-high": "#e5e8ee",
+                        "on-tertiary-container": "#ad8d5b",
+                        "surface-container-low": "#f1f4f9",
+                        "outline-variant": "#c5c6ce",
+                        "secondary-container": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#191c1e",
+                        "surface-variant": "#e0e3e8",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#444749",
+                        "error-container": "#ffdad6",
+                        "primary": "#031632",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7f9ff",
+                        "on-tertiary-fixed": "#281900",
+                        "surface-dim": "#d7dadf",
+                        "inverse-surface": "#2d3135",
+                        "inverse-on-surface": "#eef1f6",
+                        "on-tertiary-fixed-variant": "#5b4217",
+                        "primary-fixed": "#d7e2ff",
+                        "primary-container": "#1a2b48",
+                        "inverse-primary": "#b6c7eb",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "secondary": "#5c5f61",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#8293b5",
+                        "tertiary-fixed-dim": "#e5c18a",
+                        "secondary-fixed": "#e0e3e5",
+                        "on-primary-fixed": "#081b38",
+                        "on-secondary-container": "#626567",
+                        "outline": "#75777e",
+                        "surface-container-highest": "#e0e3e8",
+                        "tertiary-fixed": "#ffdead",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface": "#f7f9ff",
+                        "background": "#f7f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#211400",
+                        "on-background": "#181c20",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface-container": "#ebeef3",
+                        "tertiary-container": "#3c2700",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#44474d",
+                        "surface-tint": "#4e5f7e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter-grid": "12px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface docked full-width top-0 flex justify-between items-center w-full px-margin-mobile py-md sticky top-0 z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface dark:text-on-surface">menu</span>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-primary dark:text-primary-fixed-dim">Collector’s Library</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a sophisticated person with warm skin tones, looking directly at the camera with a subtle, professional smile. The background is a soft, out-of-focus archival library setting, emphasizing a clean and modern academic aesthetic. The lighting is diffused and professional, matching a premium corporate UI design with natural shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPecmaQEX68DPkaVvePFm9EBd4vvOxet8Iw1SlQa3amjlhJFINVZQoJ21XPJ-yytkU2gGO0Vk75lS0gpNmU6Mc0C6I7xrXouF1hHT-N-4IN5-reDh9jiAhb1LZy0ykYbZSfmyNUPpTq8vHe2vifh0a-aOfZhIKryT4L_-r95EYsteg7fUbk9KcBpsTz5hAXmP6ndfEi65eSE5sJDrfkskZTV76Kdho0FcTYcSLgS8g7Nvot1tg5A-2zuyuU8auv0TkAjKLM5AYv38q"/>
+</div>
+</header>
+<main class="px-margin-mobile pt-sm">
+<!-- Search and Page Title -->
+<div class="mb-lg">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-md">Ma Wishlist</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-lowest border border-outline-variant rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-on-surface" placeholder="Rechercher un article souhaité..." type="text"/>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex gap-sm overflow-x-auto pb-sm no-scrollbar mb-lg">
+<button class="flex items-center gap-xs px-md py-xs bg-primary text-on-primary rounded-full font-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">apps</span>
+                Tous
+            </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container-high text-secondary rounded-full font-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[18px]">book</span>
+                Livres
+            </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container-high text-secondary rounded-full font-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[18px]">movie</span>
+                Films
+            </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container-high text-secondary rounded-full font-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[18px]">album</span>
+                Musique
+            </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container-high text-secondary rounded-full font-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[18px]">videogame_asset</span>
+                Jeux
+            </button>
+</div>
+<!-- Wishlist Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter-grid">
+<!-- Item Card 1 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A clean, minimalist book cover for a modern novel, featuring abstract geometric shapes in shades of navy blue and soft cream. The lighting is bright and architectural, reflecting a professional studio product shot. The aesthetic is sophisticated and high-end, fitting perfectly into a curator's digital library interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPEZRj9DuNubIwCBUX9UpKlYQCPrlGzUUVsAAhfqVBZyL3_3jnNECzEGVos5bbkaO6RR-F-kzWV50TCNgI3gGKG0MEqJDLUDjcN5-Y1SoON18UBYFlG3V6K1vtxB3KlnDbGAplo0lPDRo2HcxhkxAEtAIKWbOTAUP8YYR_Cn3EwVJOcWwf572OscgNkVrurltc1e_fUy5nUbZc_agb_h9OZ4-oV1VW7d2CKGJK_tIXpTThc2zHYG8tNYfnJFXDmGf16qw3yQ6e9UHz"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">book</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">L'Art de la Guerre</h3>
+<p class="font-body-md text-[12px] text-secondary">Sun Tzu</p>
+<p class="font-label-md text-primary mt-base">14,99 €</p>
+</div>
+<!-- Item Card 2 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Vinyl Cover" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="An artistic vinyl record cover showing a vibrant, colorful nebula against a deep black cosmic background. The lighting is dramatic and saturated, emphasizing the rich textures and deep primary colors. This represents a high-quality collector's edition of a modern electronic album, presented in a clean and minimal digital catalog layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOBEt_VSRckG14dCRFSInMsZYCTfAZIgvRzGn_7lohLbUckbm41WZ65GHXbqWKZJSG6xkq61DZ6Rk2QL5IyCzpIr9H8tFaCIQAi7E8964qiE2BsNrXLn7l4RAC4MxVWpa2TFy6MvHsLQRXh3EvJimitDhRKDmoJ1sKOXXUM17Bc8W2Z85bnkOu_MjcTiBw5_1qVmNSZvW_EBvpw5QwKBPrIpblW2zYakuG3FuFCJVDT12apa_PNkN9s8Ll-uK_cAOu87tXB__AQoYr"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">album</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">Random Access Memories</h3>
+<p class="font-body-md text-[12px] text-secondary">Daft Punk</p>
+<p class="font-label-md text-primary mt-base">34,50 €</p>
+</div>
+<!-- Item Card 3 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Movie Poster" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A cinematic movie poster for a sci-fi masterpiece, featuring a lone figure standing before a massive, glowing architectural monolith. The palette consists of cold blues and warm oranges, with sharp, professional typography. The lighting is atmospheric and moody, creating a sense of epic scale and high-quality production for a media enthusiast's collection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArekRlWoavx9oheb66e_ep2Guw3VA6VdB5i_f0mbjSn_DI6JqQCBEYlTv_DKHorgO2h8M2YCFvaSmFwv_BY6pp3u3ROlJygDBSJIzXyCJHVLp9iV6Kkeu1oF3IraOTFuMyT2OnXg3mJ5WGb__AdlZfVMOz71vOB5RLjBmU3nJaecmeJBEQOxKquWD4pr8sbUNXTcJGi3Tv-JQg5kzciqIL-Ms9NArdkPBPwgWgsLiq8eROi83AHFAHCwh-cTxNySZZCsl6h1xloJv3"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">movie</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">Interstellar (Collector)</h3>
+<p class="font-body-md text-[12px] text-secondary">Christopher Nolan</p>
+<p class="font-label-md text-primary mt-base">22,00 €</p>
+</div>
+<!-- Item Card 4 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A professional photograph of a classic literature book cover, featuring an elegant leather texture and gold-leaf embossed title. The setting is a warm, sun-drenched wooden desk, creating a tactile and archival atmosphere. The lighting is soft and golden, emphasizing the premium quality of a physical collectible within a digital sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWEfgT8sv76CxDfWAZys56goJxGqBfCvOqK7BRbAWvXCg2ZYnyP1-KOKPZVPQ5g6v0TQnm5lEbaEefDBb3EoOrSbxKn5R-_nA8g1AefcenQqLH88qiNEaXWIR-EXbRo8pZmJleXnW70Job8pd4ZtSV8BDdmW_vPKqYInkey5FScIf36rwhvdsfmvFJ0JkBd8A6KSNlt53eqUuQNwj4n7lYgXxfM8ccRNOB2tPbRTBzH9QzhkMhDd696uAvJXhKMGLL_4IomR9mt54B"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">book</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">Méditations</h3>
+<p class="font-body-md text-[12px] text-secondary">Marc Aurèle</p>
+<p class="font-label-md text-primary mt-base">18,90 €</p>
+</div>
+<!-- Item Card 5 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Game Case" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="The cover art of a high-end video game box set, showing a futuristic city skyline with neon lights and deep shadows. The visual style is crisp and detailed, with a focus on modern cyberpunk aesthetics. The lighting is vibrant and high-contrast, designed to stand out in a digital collector's library, using professional game marketing imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZnUALEYR0hjGwng8ueZzrlTGHEbCJz4KWoZGPotbjVx3f4bRrtVIM7ldjREgq4JMrrfsuOlNNMVEBcCb9V0464MtOsGil_5d-xmE1BAuSjH7A6tmU_6cf4W4oCpr6VA3IV9ROIyrBzYWzYsDJcnrN9Tz0hPMq3FV8nDOKhd0OvTa3WN86KhA4PHYrQCfYI2yKeXxuLqnsxFMA5Q9ZuRpxVXJWnxEX_E7c7hOTx3zhTWlSyNDq1FYTNeX0ffNhkTu5wR5U3RxS7WVh"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">videogame_asset</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">Cyberpunk 2077</h3>
+<p class="font-body-md text-[12px] text-secondary">CD Projekt Red</p>
+<p class="font-label-md text-primary mt-base">49,99 €</p>
+</div>
+<!-- Item Card 6 -->
+<div class="group flex flex-col">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-xs shadow-[0_4px_12px_rgba(26,43,72,0.05)] bg-surface-container-low">
+<img alt="Vinyl Cover" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A stylized music album cover featuring a monochrome portrait with artistic light leaks and high grain. The aesthetic is indie and archival, resembling a classic jazz record from the 60s but with a modern minimalist twist. The lighting is low-key and dramatic, fitting the archival precision of a collector's sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz0L3CH0V4EbDm5wrlJZ2862ruMNOtEAmhYl9J2FuO0LMcmQquZhfNwrKVyNUpdHbiv9WoCjCB9Gm0rHHVd4JoA8vCwZuHuniNSF64OpJTSmsqKjSP_PZdnFiYJ-iglXo3FsNHp7HD8YwPaY4DBR1VKA9FYiNU-X6xAXXI4EKfV0w5ABYwBoBXgjN0UQw5FLL88GcnM9jmBGL_kJUOfL8PHFABXAFnNzjm99AE9UImcrCCRu55uMYSZH7jEJOQcFOKjRXmGEcPt9ic"/>
+<div class="absolute top-xs right-xs">
+<div class="bg-primary-container text-on-primary-container px-xs py-base rounded-lg font-label-md flex items-center gap-base shadow-sm">
+<span class="material-symbols-outlined text-[14px]">album</span>
+</div>
+</div>
+<button class="absolute bottom-xs right-xs bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-[14px] leading-tight text-on-surface line-clamp-1">Kind of Blue</h3>
+<p class="font-body-md text-[12px] text-secondary">Miles Davis</p>
+<p class="font-label-md text-primary mt-base">29,00 €</p>
+</div>
+</div>
+</main>
+<!-- FAB (Suppressed on this sub-page per logic but here I keep it if it fits the 'Add to Wishlist' action) -->
+<!-- Decision: The prompt specifically asks for a 'quick add' button per article, so global FAB for 'Add to Wishlist' is appropriate -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]">bookmark_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs pb-md pt-xs bg-surface dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(26,43,72,0.05)]">
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-md text-label-md">Collection</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-label-md">Ajouter</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 transition-all active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-md text-label-md">Wishlist</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md text-label-md">Stats</span>
+</div>
+</nav>
+</body></html>
